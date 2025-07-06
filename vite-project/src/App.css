@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+
+.artwork-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; 
+
+}
+/*_____________________________________________BUTTON*/
+
+.my-button {
+  padding: 20px 40px;
+  background-color: #5ebecd; /* Зелений колір */
+  color: white;
+  border: none; 
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.my-button:hover {
+  background-color: #4e9ca8; /* Трохи темніше при наведенні */
+}
