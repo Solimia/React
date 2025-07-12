@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard";
-import Rating from "./components/Rating";
+import AddProductForm from './components/AddProductForm';
 
-
-const products = [
+const initialProducts = [
   {
     id: 1,
     title: "Підніжка велосипеда Myspace",
@@ -27,7 +26,7 @@ const products = [
     reviews: 0,
     image: "/images/мастило.png",
   },
-    {
+  {
     id: 3,
     title: "Мастило для воріт та петель CX80 SMAR BIALY (500 мл)",
     price: 250,
@@ -38,18 +37,18 @@ const products = [
     reviews: 12,
     image: "/images/МастилоДляВоріт.png",
   },
-    {
+  {
     id: 4,
-    title: "Автомобильный двухсторонний скотч 3М Plus 6 мм x 2 м x 1.1 мм Чорний ",
+    title: "Автомобільний двосторонній скотч 3М Plus 6 мм x 2 м x 1.1 мм Чорний",
     price: 109,
     inStock: true,
     rating: 4,
     reviews: 3,
     image: "/images/наліпка.png",
   },
-    {
+  {
     id: 5,
-    title: "Клавіатура Attack Shark X85 Wireless Mechanical Keyboard ",
+    title: "Клавіатура Attack Shark X85 Wireless Mechanical Keyboard",
     price: 0,
     oldPrice: 5999,
     discount: "-100%",
@@ -60,14 +59,26 @@ const products = [
   },
 ];
 
-function App() {
+const App = () => {
+  const [products, setProducts] = useState(initialProducts);
+
+  const handleAddProduct = (product) => {
+    setProducts([...products, product]);
+  };
+
   return (
-    <div className="product-list">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+    <div>
+      <h2>Додати новий товар</h2>
+      <AddProductForm onAdd={handleAddProduct} />
+
+      <h2>Список товарів</h2>
+      <div className="product-list">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
